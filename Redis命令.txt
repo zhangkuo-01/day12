@@ -1,0 +1,62 @@
+Redis命令操作
+
+key的命令：
+1	DEL key				该命令用于在 key 存在时删除 key。
+2	EXISTS key 			检查给定 key 是否存在。
+3	EXPIRE key seconds 	为给定 key 设置过期时间。
+
+五种数据类型：
+
+一、String 字符串
+新增：
+set key value 
+getset key value 	将给定 key 的值设为 value ，并返回 key 的旧值(old value)。 
+SETNX key value 	只有在 key 不存在时设置 key 的值。
+
+INCR key			 将 key 中储存的数字值增一。
+INCRBY key increment 将 key 所储存的值加上给定的增量值（increment） 。
+DECR key		     将 key 中储存的数字值减一。
+DECRBY key decrement key 所储存的值减去给定的减量值（decrement） 。
+APPEND key value 	如果 key 已经存在并且是一个字符串， APPEND 命令将指定的 value 追加到该 key 原来值（value）的末尾。
+
+查看：get key 
+STRLEN key			返回 key 所储存的字符串值的长度。
+
+修改：set key value
+
+删除：del key
+
+二、Hash   哈希表结果
+新增: hset key key value
+HMSET key field1 value1 [field2 value2 ] 同时将多个 field-value (域-值)对设置到哈希表 key 中。
+
+查看:hget key key value
+HVALS key 						获取哈希表中所有值
+HKEYS key 						获取所有哈希表中的字段
+HMGET key field1 [field2] 		获取所有给定字段的值
+
+修改: hset key key value 
+删除:
+del key 整个key删除
+HDEL key field1 [field2] 	删除一个或多个哈希表字段
+
+三、List 有序可重复队列（头部（左边）、尾部（右边））
+
+新增：push(lpush(左边存入-头部)；rpush（右边存入-尾部）) key value 
+
+查看：pop((lpop(左边弹出-头部)；rpop（右边弹出-尾部）)) key  弹出以后这个元素就从队列中移除
+
+修改：LSET key index value 	 		通过索引设置列表元素的值
+
+删除：del key
+
+四、set 	无序不可重复的集合
+新增： SADD key member1 [member2]  	向集合添加一个或多个成员
+查看: SMEMBERS KEY 					返回集合中的所有成员
+
+五、zset	有序不可重复的集合
+
+zadd key score value 
+
+
+
